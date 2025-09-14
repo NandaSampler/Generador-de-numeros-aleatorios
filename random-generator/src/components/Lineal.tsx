@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";   
 import "../styles/linear.css";
 
 type Row = { i: number; xi: number; op: string; result: number; r: number; };

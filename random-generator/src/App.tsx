@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";   
 import Navbar from "./components/Navbar";
 import Lineal from "./components/Lineal";
 import Multiplicativo from "./components/Multiplicativo";

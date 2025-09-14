@@ -1,0 +1,270 @@
+/* ===== Reset + fuente ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+body {
+  font-family: "Manrope", system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== Paleta (de tu imagen) y tokens ===== */
+:root{
+  --p0: #ecefe7;   /* marfil */
+  --p1: #d8d0a6;   /* arena */
+  --p2: #3f8e7b;   /* verde medio */
+  --p3: #1f6d63;   /* verde profundo */
+
+  --bg: #0b0e0f;         /* casi negro */
+  --panel: #111417;      /* panel cards */
+  --panel-2: #151a1d;    /* panel header/thead */
+  --muted: #a8b3b8;      /* texto tenue */
+  --text: #e7ecea;       /* texto principal */
+  --line: #263238;       /* bordes sutiles */
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ===== Layout ===== */
+.page { max-width: 1100px; margin: 24px auto; padding: 0 20px; }
+h1 { font-size: 32px; font-weight: 800; letter-spacing: .2px; }
+.left-title{ margin-left: 4px; margin-bottom: 14px; }
+
+/* ===== Navbar ===== */
+.navbar{
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 84px; padding: 0 22px;
+  background: rgba(11,14,15,.75); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand{ font-weight: 800; letter-spacing:.3px; color: var(--p0); font-size: 22px; }
+.nav-links{ display:flex; gap:18px; align-items:center; }
+.nav-tab{
+  appearance: none; background: transparent; border: 0; cursor: pointer;
+  color: var(--muted); font-weight: 800; font-size: 16px; padding: 8px 4px;
+  transition: color .2s ease, transform .15s ease;
+}
+.nav-tab:hover{ color: var(--p0); transform: translateY(-1px); }
+.nav-tab.active{ color: var(--p2); position: relative; }
+.nav-tab.active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-14px;
+  height:3px; background: linear-gradient(90deg, var(--p3), var(--p2));
+  border-radius: 999px;
+}
+
+/* ===== Contenedores ===== */
+.container{ background: transparent; }
+
+/* ===== Inputs ===== */
+.inputs{
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px; margin: 12px 0 14px;
+}
+label{ font-size: 12px; color: var(--muted); display: grid; gap:6px; }
+.input{
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px; height: 36px; outline: none; width: 100%;
+}
+.input:focus{ border-color: var(--p2); box-shadow: 0 0 0 3px rgba(63,142,123,.2); }
+select.input{ height: 36px; }
+
+/* ===== Botones ===== */
+.btn-row{ display:flex; gap:10px; margin: 10px 0 14px; flex-wrap: wrap; }
+.btn{
+  border-radius: 999px; border:1px solid transparent; cursor: pointer;
+  font-weight: 800; padding: 10px 16px; height: 40px;
+  transition: transform .12s ease, background .2s ease, border-color .2s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn-accent{
+  background: linear-gradient(180deg, var(--p2), var(--p3));
+  color: #06110f; border-color: rgba(255,255,255,.08);
+}
+.btn-accent:hover{ filter: brightness(1.05); }
+.btn-ghost{
+  background: transparent; color: var(--p0);
+  border-color: var(--line);
+}
+.btn-ghost:hover{ border-color: var(--p2); color: var(--p0); }
+.btn-ghost:disabled{ opacity:.5; cursor:not-allowed; }
+
+/* ===== Summary / badges ===== */
+.summary{
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px; margin: 4px 0 10px;
+  color: var(--p0);
+}
+.badge{
+  display:inline-block; margin-right:8px; margin-bottom:6px;
+  padding:6px 10px; border-radius: 999px; font-size:12px; font-weight:800;
+  color:#06110f; background: linear-gradient(180deg, var(--p1), #cbbf88);
+  border:1px solid rgba(0,0,0,.12);
+}
+
+/* ===== Tabla estilizada ===== */
+.table-wrap{
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  overflow:hidden; margin-top: 8px;
+}
+.table{ width:100%; border-collapse: separate; border-spacing: 0; }
+.table thead th{
+  background: var(--panel-2); color: var(--p0);
+  text-align:center; font-weight:800; font-size: 13px;
+  padding: 12px 8px; border-bottom: 1px solid var(--line);
+}
+.table tbody td{
+  padding: 10px 8px; text-align:center; font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.table tbody tr:nth-child(2n){ background: rgba(255,255,255,.02); }
+.table tbody tr:hover{ background: rgba(63,142,123,.08); }
+.mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+/* ===== Errores ===== */
+.error{
+  background: #3b1f20; color: #ffd7d7; border:1px solid #6a2a2e;
+  padding: 10px 12px; border-radius: var(--radius); margin-bottom: 12px;
+}
+
+/* ===== Footer ===== */
+.footer{
+  margin-top: 48px; padding: 24px 20px; text-align: center;
+  color: var(--muted); border-top: 1px solid var(--line);
+}
+
+/* ===== Shell para sticky footer ===== */
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.page { flex: 1; max-width: 1100px; margin: 24px auto; padding: 0 20px; }
+
+/* ===== Títulos ===== */
+h1 { font-size: 34px; font-weight: 800; letter-spacing: .2px; }
+.left-title{ margin-left: 4px; margin-bottom: 14px; }
+
+/* ===== Navbar ===== */
+.navbar{ position: sticky; top: 0; z-index: 20; display:flex; align-items:center;
+  justify-content: space-between; height: 88px; padding: 0 24px;
+  background: rgba(11,14,15,.75); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand{ font-weight: 800; letter-spacing:.3px; color: var(--p0); font-size: 26px; } /* ↑ más grande */
+.nav-links{ display:flex; gap:18px; align-items:center; }
+.nav-tab{ appearance:none; background:transparent; border:0; cursor:pointer;
+  color: var(--muted); font-weight: 800; font-size: 16px; padding: 8px 4px;
+  transition: color .2s ease, transform .15s ease;
+}
+.nav-tab:hover{ color: var(--p0); transform: translateY(-1px); }
+.nav-tab.active{ color: var(--p2); position: relative; }
+.nav-tab.active::after{ content:""; position:absolute; left:0; right:0; bottom:-14px; height:3px;
+  background: linear-gradient(90deg, var(--p3), var(--p2)); border-radius: 999px; }
+
+/* ===== Inputs más pequeños ===== */
+.inputs{ display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin: 12px 0 14px; }
+label{ font-size: 12px; color: var(--muted); display: grid; gap:6px; }
+.input{
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 6px 10px; height: 32px; font-size: 13px; outline: none; width: 100%;
+}
+.input:focus{ border-color: var(--p2); box-shadow: 0 0 0 3px rgba(63,142,123,.2); }
+select.input{ height: 32px; }
+
+/* ===== Topbar de cada módulo (para botón de ayuda) ===== */
+.module-topbar{ display:flex; justify-content:flex-end; margin-bottom: 8px; }
+.help-btn{
+  border:1px solid var(--line); background: transparent; color: var(--p0);
+  border-radius: 999px; padding: 6px 10px; font-weight: 800; cursor: pointer;
+}
+.help-btn:hover{ border-color: var(--p2); }
+
+/* ===== Pills/notes color crema ===== */
+.pills{ margin-top: 6px; }
+.pill-cream{
+  display:inline-block; margin-right:8px; margin-bottom:6px;
+  padding:6px 10px; border-radius: 999px; font-size:12px; font-weight:800;
+  color:#06110f; background: linear-gradient(180deg, var(--p1), #cbbf88);
+  border:1px solid rgba(0,0,0,.12);
+}
+
+/* ===== Modal ayuda ===== */
+.modal-backdrop{ position: fixed; inset: 0; background: rgba(0,0,0,.6);
+  display:flex; align-items:center; justify-content:center; z-index: 50; }
+.modal{
+  position: relative; width: min(560px, 92vw);
+  background: var(--panel); color: var(--text);
+  border:1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow);
+}
+.modal-title{ font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.modal p, .modal li{ color: var(--muted); font-size: 14px; line-height: 1.5; }
+.modal-close{ position: absolute; right: 12px; top: 10px;
+  background: transparent; border: 0; color: var(--muted); font-size: 20px; cursor: pointer; }
+
+/* ===== Tabla, botones y footer: (deja lo que ya tenías estilizado) ===== */
+/* (mantén .table-wrap, .table, .btn, .summary, .badge, etc. como los pusimos antes) */
+
+/* ===== Footer fijo al final ===== */
+.footer{
+  margin-top: 0; padding: 24px 20px; text-align: center;
+  color: var(--muted); border-top: 1px solid var(--line);
+}
+
+/* ===== Layout base un poco más grande ===== */
+body { font-size: 16.5px; }         /* sutilmente más grande */
+h1 { font-size: 36px; }              /* título principal */
+
+/* ===== Navbar (marca más grande) ===== */
+.navbar { height: 92px; padding: 0 26px; }
+.nav-brand { font-size: 28px; }      /* ↑ más grande */
+
+/* ===== Labels e inputs (texto más grande pero compactos) ===== */
+.inputs { gap: 12px; }
+label { font-size: 14px; font-weight: 700; }          /* labels más grandes */
+.input {
+  padding: 8px 12px;
+  height: 34px;                                       /* compacto pero legible */
+  font-size: 14px;                                    /* texto más grande */
+}
+.input:focus { border-color: var(--p2); box-shadow: 0 0 0 3px rgba(63,142,123,.22); }
+
+/* Select a juego con el resto */
+.input.select, select.input {
+  appearance: none;                                   /* saca flecha nativa */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='%23a8b3b8'><path d='M5.5 7.5l4.5 5 4.5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px 14px;
+  padding-right: 34px;
+}
+
+/* ===== Pills/notes ===== */
+.badge {                                             /* un pelín más grande */
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+/* ===== Modal ayuda más grande y cómodo de leer ===== */
+.modal-backdrop { backdrop-filter: blur(2px); }
+.modal {
+  width: min(720px, 96vw);                           /* ↑ ancho */
+  padding: 22px;                                     /* ↑ padding */
+}
+.modal-title { font-size: 20px; margin-bottom: 10px; }
+.modal p, .modal li {
+  font-size: 15px;                                   /* ↑ texto */
+  line-height: 1.7;                                  /* más aire */
+}
+.modal-close { font-size: 22px; }
+
+/* ===== Tabla (un poco más grande) ===== */
+.table thead th { font-size: 14px; padding: 14px 10px; }
+.table tbody td { font-size: 14px; padding: 12px 10px; }
+

@@ -1,0 +1,133 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body {
+  font-family: "Manrope", system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root{
+  --p0: #ecefe7; 
+  --p1: #d8d0a6;  
+  --p2: #3f8e7b; 
+  --p3: #1f6d63;  
+
+  --bg: #0b0e0f;         
+  --panel: #111417;      
+  --panel-2: #151a1d;     
+  --muted: #a8b3b8;      
+  --text: #e7ecea;        
+  --line: #263238;      
+
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.page { max-width: 1100px; margin: 24px auto; padding: 0 20px; }
+h1 { font-size: 28px; font-weight: 800; letter-spacing: .2px; }
+
+.navbar{
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px; padding: 0 20px;
+  background: rgba(11,14,15,.75); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand{ font-weight: 800; letter-spacing:.3px; color: var(--p0); }
+.nav-links{ display:flex; gap:18px; align-items:center; }
+.nav-tab{
+  appearance: none; background: transparent; border: 0; cursor: pointer;
+  color: var(--muted); font-weight: 700; font-size: 15px; padding: 8px 4px;
+  transition: color .2s ease, transform .15s ease;
+}
+.nav-tab:hover{ color: var(--p0); transform: translateY(-1px); }
+.nav-tab.active{ color: var(--p2); position: relative; }
+.nav-tab.active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-12px;
+  height:3px; background: linear-gradient(90deg, var(--p3), var(--p2));
+  border-radius: 999px;
+}
+
+.container{
+  background: transparent;
+}
+
+
+.inputs{
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin: 12px 0 14px;
+}
+.input{
+  background: var(--panel); color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px; height: 36px;
+  outline: none; width: 100%;
+}
+.input:focus{ border-color: var(--p2); box-shadow: 0 0 0 3px rgba(63,142,123,.2); }
+select.input{ height: 36px; }
+label{ font-size: 12px; color: var(--muted); display: grid; gap:6px; }
+
+
+.btn-row{ display:flex; gap:10px; margin: 10px 0 14px; flex-wrap: wrap; }
+.btn{
+  border-radius: 999px; border:1px solid transparent; cursor: pointer;
+  font-weight: 700; padding: 10px 16px; height: 40px;
+  transition: transform .12s ease, background .2s ease, border-color .2s ease;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn-accent{
+  background: linear-gradient(180deg, var(--p2), var(--p3));
+  color: #06110f; border-color: rgba(255,255,255,.08);
+}
+.btn-accent:hover{ filter: brightness(1.05); }
+
+.btn-ghost{
+  background: transparent; color: var(--p0);
+  border-color: var(--line);
+}
+.btn-ghost:hover{ border-color: var(--p2); color: var(--p0); }
+
+.summary{
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px; margin: 4px 0 10px;
+  color: var(--p0);
+}
+.badge{
+  display:inline-block; margin-right:8px; margin-bottom:6px;
+  padding:6px 10px; border-radius: 999px; font-size:12px; font-weight:700;
+  color:#06110f; background: linear-gradient(180deg, var(--p1), #cbbf88);
+  border:1px solid rgba(0,0,0,.12);
+}
+
+
+.table-wrap{
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.table{ width:100%; border-collapse: separate; border-spacing: 0; }
+.table thead th{
+  background: var(--panel-2); color: var(--p0);
+  text-align:center; font-weight:800; font-size: 13px;
+  padding: 12px 8px; border-bottom: 1px solid var(--line);
+}
+.table tbody td{
+  padding: 10px 8px; text-align:center; font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.table tbody tr:nth-child(2n){ background: rgba(255,255,255,.02); }
+.table tbody tr:hover{ background: rgba(63,142,123,.08); }
+
+
+.error{
+  background: #3b1f20; color: #ffd7d7; border:1px solid #6a2a2e;
+  padding: 10px 12px; border-radius: var(--radius); margin-bottom: 12px;
+}
+
+.mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+.left-title{ margin-left: 4px; margin-bottom: 12px; } 
